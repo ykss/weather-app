@@ -9,7 +9,13 @@ type Props = {
 };
 
 const Detail = async ({ params }: Props) => {
-  const name = params.location === "seoul" ? "서울" : "";
+  const getLabel = () => {
+    if (params.location === "seoul") return "서울";
+    else if (params.location === "ny") return "뉴욕";
+    else return "런던";
+  };
+
+  const name = getLabel();
   const res = await getForecast(params.location);
 
   console.log(res);

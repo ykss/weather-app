@@ -1,8 +1,23 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  align-items: center;
+
+  .refresh {
+    height: fit-content;
+  }
+}
+
 .list {
   list-style: none;
 }
 
 .list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
   font-size: 14px;
   line-height: 24px;
 }
