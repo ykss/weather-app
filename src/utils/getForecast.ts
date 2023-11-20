@@ -145,7 +145,8 @@ interface Condition3 {
 
 export const getForecast = async (location: string): Promise<Response> => {
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=3&aqi=no&alerts=no`
+    `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=3&aqi=no&alerts=no`,
+    { next: { tags: ["time"] } }
   );
 
   if (!res.ok) {

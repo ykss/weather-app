@@ -1,24 +1,28 @@
 import React from "react";
+
 import HomeButton from "@/components/HomeButton";
+
 import { getForecast } from "@/utils/getForecast";
 
 type Props = {
   params: {
     location: string;
   };
+  searchParams: {
+    name: string;
+  };
 };
 
-const Detail = async ({ params }: Props) => {
-  const getLabel = () => {
-    if (params.location === "seoul") return "서울";
-    else if (params.location === "ny") return "뉴욕";
-    else return "런던";
+export const generateMetadata = ({ searchParams }: Props) => {
+  return {
+    title: `${searchParams.name}의 날씨 예보`,
+    description: "날씨는 뭐죠!?",
   };
+};
 
-  const name = getLabel();
+const Detail = async ({ params, searchParams }: Props) => {
+  const name = searchParams.name;
   const res = await getForecast(params.location);
-
-  console.log(res);
 
   return (
     <>
